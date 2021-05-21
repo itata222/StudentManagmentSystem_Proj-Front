@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800&display=swap');
+
+//overall Settings
+$all-fontSize:0.875rem;
+$all-fontFamily:'Poppins', sans-serif;
+$all-fontColor:rgba(0, 0, 0, 0.87);
+$all-backgroundColor:#FFFFFF;
+
+//navigation bar Settings
+$nav-BottomBorder:1px solid rgba(0, 0, 0, 0.12);
+$nav-Display:flex;
+$nav-Position: relative;
+$nav-AlignItems: center;
+$nav-activeLinkStyle: #303F9F;
+
+//borders Settings
+$borderStyleV1:1px solid rgba(0, 0, 0, 0.23);
+
+
+//buttons Settings
+$errorMessageColor: #d90429;

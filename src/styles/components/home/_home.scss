@@ -1,0 +1,23 @@
+.home,.homeConnected{
+    display:flex;
+    flex-direction:column;
+    margin:auto;
+    align-items:center;
+    vertical-align:middle;
+    justify-content: center;
+    line-height: 1;
+    
+    h1{
+        font-size: 5rem;
+    }
+    h2{
+        font-size: 3rem;
+    }
+    h6{
+        transform: translate3d(80px, -50px, 10px);
+    }
+}
+
+.homeConnected{
+    text-align: center;
+}

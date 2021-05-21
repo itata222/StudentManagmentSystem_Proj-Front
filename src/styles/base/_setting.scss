@@ -1,0 +1,17 @@
+
+*{
+    box-sizing: border-box;
+    font-size: $all-fontSize;
+    font-family: $all-fontFamily;
+    color:$all-fontColor;
+}
+
+body{
+    width: 94%;
+    margin: auto;
+    background-color: $all-backgroundColor;
+}
+
+[disabled]{
+    cursor: not-allowed;
+}

@@ -1,0 +1,101 @@
+.login-page {
+    width: 100%;
+    height: calc(100vh - 12.5rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-page__form {
+    width: 80%;
+    border: $borderStyleV1;
+    border-radius: 5px;
+    margin: 2rem;
+    padding: 1rem;
+  }
+  
+  .login-form {
+    h3 {
+      text-align: center;
+      color: $all-fontColor;
+    }
+  
+    input {
+      display: block;
+      width: 100%;
+      padding: 0.5rem;
+      border: $borderStyleV1;
+      margin-top: 1rem;
+      border-radius: 5px;
+  
+      &:focus {
+        outline: none;
+      }
+    }
+    .isStudentSection{
+        display: flex;
+        align-self: center;
+        margin-left: 0.45rem;
+
+        .isStudentLabel{
+            font-size: 0.8rem;
+            width: 10rem;
+        }
+        .isStudentCheckBox{
+            margin: auto;
+            width: 1rem;
+
+            &:checked{
+                background:blue;
+                color: white;
+            }
+        }
+    }
+      
+  
+    button {
+      display: block;
+      padding: 0.5rem;
+      background: $all-fontColor;
+      color: $all-backgroundColor;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+  
+      &:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+    }
+  }
+  
+  .input-invalid {
+    border: 1px solid red;
+  }
+  
+  .invalid-message {
+    color: red;
+    font-size: 0.75rem;
+  }
+  
+  .login-form__nav {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+  
+    div {
+      font-size: 0.75rem;
+      align-self: flex-end;
+      text-decoration: underline;
+    }
+  }
+ 
+  
+.error-message {
+  color: $errorMessageColor;
+  background: #ccc;
+  border-radius: 5px;
+  padding: 0.5rem;
+  text-align: center;
+}

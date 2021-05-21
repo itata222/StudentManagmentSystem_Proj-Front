@@ -1,0 +1,48 @@
+body{
+    margin: auto !important;
+    background-color:white !important;
+}
+
+.professorAddCourse{
+    width:100%
+}
+
+.addCourseContainer{
+    width:100%;
+    margin: auto;
+}
+
+.addCourseHeader{
+    font-family: $all-fontFamily !important;
+}
+
+.addCourse-date{
+    width: 95%;
+    border-radius: 4px;
+    margin: 0.4rem auto !important;
+}
+
+
+.addCourse-days{
+    width: 96%;
+    margin: 0.3rem auto;
+    padding: 0.5rem;
+    border: 1px solid rgb(192, 187, 187);
+    border-radius: 4px;
+
+    h6{
+        margin: 0.5rem 0;
+    }
+
+    &:first-child{
+        display:flex;
+        flex-wrap: wrap;
+        justify-content:space-evenly;
+        width:100%;
+        align-items:center;
+    }
+}
+
+.addCourse-checkbox{
+    width:30%;
+}
