@@ -15,7 +15,7 @@ const Home = () => {
                     </div>
                     :
                     <div className="homeConnected">
-                        <h1>Welcome</h1>
+                        <h1>Hey</h1>
                         <h2>I Hope You Study Hard...</h2>
                     </div>
             }

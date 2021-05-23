@@ -15,12 +15,12 @@ import { addCourseToDB } from '../../services/professorService';
 import { LoginContext } from '../../contexts/loginContext';
 import { useContext } from 'react';
 import ModalComponent from '../main/Modal'
-import { PCoursesContext } from '../../contexts/professor/coursesContext';
-import { addCourse } from '../../actions/professor/coursesActions'
+import { CoursesContext } from '../../contexts/coursesContext';
+import { addCourse } from '../../actions/coursesActions'
 
 const ProfessorAddCourse = () => {
     const { userData } = useContext(LoginContext);
-    const { coursesData, dispatchCoursesData } = useContext(PCoursesContext)
+    const { coursesData, dispatchCoursesData } = useContext(CoursesContext)
     const [showModal, setShowModal] = useState(false);
 
     const [title, setTitle] = useState("");

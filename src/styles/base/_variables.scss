@@ -6,12 +6,15 @@ $all-fontFamily:'Poppins', sans-serif;
 $all-fontColor:rgba(0, 0, 0, 0.87);
 $all-backgroundColor:#FFFFFF;
 
+$secondaryColor:#303F9F;
+$primaryColor:rgba(0, 0, 0, 0.87);
+
 //navigation bar Settings
 $nav-BottomBorder:1px solid rgba(0, 0, 0, 0.12);
 $nav-Display:flex;
 $nav-Position: relative;
 $nav-AlignItems: center;
-$nav-activeLinkStyle: #303F9F;
+$nav-activeLinkStyle: $secondaryColor;
 
 //borders Settings
 $borderStyleV1:1px solid rgba(0, 0, 0, 0.23);

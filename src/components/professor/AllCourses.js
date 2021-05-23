@@ -1,41 +1,46 @@
-import React, { useContext } from 'react';
-import { useHistory } from 'react-router';
-import { PCoursesContext } from '../../contexts/professor/coursesContext';
+import React, { useContext, useEffect, useState } from 'react';
+import { CoursesContext } from '../../contexts/coursesContext'
+import { LoginContext } from '../../contexts/loginContext'
+import { getAllCoursesFromDB } from '../../services/professorService';
+import Spinner from '../main/Spinner';
+import { getAllCourses } from '../../actions/coursesActions'
+import GetCourses from './GetCourses';
+import { saveCoursesOnCookie } from '../../cookies/cookies';
 
-const AllCourses = () => {
-    const { coursesData } = useContext(PCoursesContext);
+const ProfessorCourses = () => {
 
-    const history = useHistory();
+    const { dispatchCoursesData } = useContext(CoursesContext);
+    const { userData } = useContext(LoginContext)
+    const [isPageLoaded, setIsPageLoaded] = useState(false);
 
-    const OnClickAddCourse = (e) => {
-        e.preventDefault();
-        history.push('/professors/addCourse')
-    }
-
-    const openCoursePage = (e) => {
-        e.preventDefault();
-        const url = '/professors/courses/' + e.target.innerHTML
-        history.push(url)
-    }
+    // console.log(userData)
+    useEffect(() => {
+        let isComponentExist = true;
+        getAllCoursesFromDB(userData.token).then((courses) => {
+            if (isComponentExist) {
+                saveCoursesOnCookie(courses)
+                dispatchCoursesData(getAllCourses(courses));
+                setIsPageLoaded(true);
+            }
+            else
+                console.log('wwfwfwf')
+        }).catch((err) => { alert(err.message) });
+        return () => {
+            isComponentExist = false;
+        };
+    }, [userData.token, dispatchCoursesData]);
 
     return (
-        <div className="allCoursesContainer">
-            <div className="addCourse">
-                <button className="addCourseButton" onClick={OnClickAddCourse}>Add Course</button>
-            </div>
+        <div className="allCourses">
             {
-                coursesData.courses.map((course, i) => (
-                    <div key={i} className="course" onClick={openCoursePage}>
-                        <div className="courseName">{course.title}</div>
-                        <div className="courseDates">
-                            <div><span className="courseBD">Beginning Date:</span> {course.beginningDate.substr(0, 10)}</div>
-                            <div><span className="courseED">Ending Date:</span> {course.endingDate.substr(0, 10)}</div>
-                        </div>
-                    </div>
-                ))
+                isPageLoaded ?
+                    <GetCourses /> :
+                    <Spinner />
             }
         </div>
     )
 }
 
-export default AllCourses
+
+
+export default ProfessorCourses;

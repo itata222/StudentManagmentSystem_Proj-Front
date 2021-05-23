@@ -2,9 +2,10 @@ import React, { useContext, useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import { LoginContext } from '../../contexts/loginContext';
 import { professorChangePassword } from '../../services/professorService';
-import ModalComponent from '../main/Modal';
+import { studentChangePassword } from '../../services/studentService';
+import ModalComponent from './Modal';
 
-const ProfessorProfile = () => {
+const MyProfile = () => {
     const { userData } = useContext(LoginContext);
     const [changePassword, setChangePassword] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
@@ -14,7 +15,6 @@ const ProfessorProfile = () => {
     const [showModal, setShowModal] = useState(false);
 
     const isFormInvalid = () => {
-        console.log(isPasswodsMatch, isPasswordValid)
         return isPasswodsMatch === true && isPasswordValid === true
     }
 
@@ -52,7 +52,8 @@ const ProfessorProfile = () => {
 
     const submitForm = (e) => {
         e.preventDefault();
-        professorChangePassword(userData.token, password).then((response) => {
+        const changePasswordFunction = userData.user.courses ? studentChangePassword : professorChangePassword;
+        changePasswordFunction(userData.token, password).then((response) => {
             setShowModal(true)
             setErrorMessage("")
         }).catch((err) => {
@@ -100,4 +101,4 @@ const ProfessorProfile = () => {
     )
 }
 
-export default ProfessorProfile;
+export default MyProfile;

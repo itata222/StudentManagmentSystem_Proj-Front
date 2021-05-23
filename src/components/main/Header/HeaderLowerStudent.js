@@ -9,7 +9,7 @@ const HeaderLowerStudent = () => {
         <div className="lower-nav">
             <NavLink className="lower-nav-item" to="/students/my-courses" activeClassName="lower-nav-active-item">My Courses</NavLink>
             <Divider orientation="vertical" flexItem />
-            <NavLink className="lower-nav-item" to="/students/my-profile" activeClassName="lower-nav-active-item">Profile</NavLink>
+            <NavLink className="lower-nav-item" to="/profile" activeClassName="lower-nav-active-item">Profile</NavLink>
         </div>
     )
 }

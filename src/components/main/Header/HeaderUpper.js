@@ -2,7 +2,7 @@ import React from 'react';
 import { logoutAction } from '../../../actions/loginActions';
 import { NavLink, useHistory } from 'react-router-dom';
 import brand from '../../../brand.png';
-import { deleteUserFromCookie } from '../../../cookies/cookies';
+import { deleteCoursesFromCookie, deleteUserFromCookie } from '../../../cookies/cookies';
 
 
 const HeaderUpper = (props) => {
@@ -11,7 +11,8 @@ const HeaderUpper = (props) => {
 
     const onClickLogout = () => {
         props.dispatchUserData(logoutAction());
-        deleteUserFromCookie()
+        deleteUserFromCookie();
+        deleteCoursesFromCookie();
         history.push("/home");
     };
 

@@ -56,9 +56,9 @@
 }
 
 .upper-nav-active-item{
-    color: $nav-activeLinkStyle;
+    color: $secondaryColor;
 }
 
 .lower-nav-active-item{
-    color: lighten($color: $nav-activeLinkStyle, $amount: 20%)
+    color: lighten($color: $secondaryColor, $amount: 20%)
 }

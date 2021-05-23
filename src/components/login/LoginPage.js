@@ -47,7 +47,6 @@ const LoginPage = () => {
 
     const onSubmitform = (event) => {
         event.preventDefault();
-        console.log("login form:", email, password, checked);
         checked ?
             professorloginToDB(email, password).then(
                 (response) => {
@@ -62,10 +61,8 @@ const LoginPage = () => {
                     setErrorMessage(err.message)
                 }) :
             studentloginToDB(email, password).then(
-                (response) => {
-                    const userData = response.data;
+                (userData) => {
                     saveUserOnCookie(userData)
-                    console.log(userData)
                     dispatchUserData(loginAction(userData));
                     history.push('/students/my-courses')
                 },

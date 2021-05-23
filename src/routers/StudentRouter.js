@@ -5,11 +5,12 @@ import { LoginContext } from '../contexts/loginContext';
 
 const StudentRouter = ({ component: Component, ...rest }) => {
     const { userData } = useContext(LoginContext);
+
     return (
         <Route
             {...rest}
             component={(props) => (
-                !!userData.token ? userData.courses ?
+                !!userData.token ? userData.user.courses ?
                     <Component {...props} />
                     : <Redirect to={{ pathname: "/professors/courses" }} />
                     : <Redirect to={{ pathname: "/login" }} />

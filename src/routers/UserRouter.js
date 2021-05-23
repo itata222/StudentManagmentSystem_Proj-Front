@@ -3,20 +3,17 @@ import { useContext } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { LoginContext } from '../contexts/loginContext';
 
-
-const ProfessorRouter = ({ component: Component, ...rest }) => {
+const UserRouter = ({ component: Component, ...rest }) => {
     const { userData } = useContext(LoginContext);
-
     return (
         <Route
             {...rest}
             component={(props) => (
-                !!userData.token ? !userData.user.courses ?
+                !!userData.token ?
                     <Component {...props} />
-                    : <Redirect to={{ pathname: "/students/my-courses" }} />
                     : <Redirect to={{ pathname: "/login" }} />
             )}
         />);
 };
 
-export default ProfessorRouter;
+export default UserRouter;

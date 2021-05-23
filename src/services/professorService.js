@@ -53,6 +53,19 @@ export const getAllCoursesFromDB = async (token) => {
     }
 }
 
+export const getAllStudentsFromDB = async (token) => {
+    try {
+        const res = await Axios.get(developmentDB + "/professors/all-students", {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        return res.data
+    } catch (err) {
+        console.log(err);
+    }
+}
+
 export const addCourseToDB = async (token, newCourse) => {
     try {
         const res = await Axios.post(developmentDB + "/professors/add-course", { token, course: newCourse }, {
@@ -69,13 +82,39 @@ export const addCourseToDB = async (token, newCourse) => {
 
 export const addStudentToDB = async (token, newStudent) => {
     try {
-        const res = await Axios.post(developmentDB + "/professors/add-student", { token, student: newStudent }, {
+        const res = await Axios.post(developmentDB + "/professors/add-student", { user: newStudent }, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
         });
-        console.log(res.data)
+        return res.data
     } catch (err) {
         console.log(err);
+    }
+}
+
+export const addStudentToCourseFunc = async (token, studentID, courseID) => {
+    try {
+        const res = await Axios.post(developmentDB + "/professors/add-studentToCourse", { studentID, courseID }, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        return res.data
+    } catch (err) {
+        return err
+    }
+}
+
+export const getStudentsOfSpecificCourse = async (token, course) => {
+    try {
+        const res = await Axios.post(developmentDB + "/professors/course/students", { course }, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        return res.data
+    } catch (e) {
+        return e
     }
 }
