@@ -5,35 +5,52 @@ import { LoginContext } from '../../contexts/loginContext'
 import Avatar from '@material-ui/core/Avatar';
 import Spinner from './Spinner'
 import { useHistory } from 'react-router';
-import { getStudentsOfSpecificCourse } from '../../services/professorService';
+import { getStudentMissedAppearences, getStudentsOfSpecificCourse } from '../../services/professorService';
 
 
 const CoursePage = () => {
     const { userData } = useContext(LoginContext);
     const { courseData } = useContext(CourseContext);
     const [students, setStudents] = useState([...courseData.students]);
+    // const [lessons, setLessons] = useState([...courseData.lessonsDuringWeek]);
     const [isCourseLoaded, setIsCourseLoaded] = useState(false);
     const history = useHistory()
-
-    useEffect(() => {
-        setIsCourseLoaded(true)
-    }, [courseData]);
 
     const addStudent = (e) => {
         e.preventDefault();
         history.push('/professors/studentsManagment')
     }
 
+    const addLessonToCourse = (e) => {
+        e.preventDefault();
+        history.push('/professors/addLesson/' + courseData._id)
+    }
 
     useEffect(() => {
-        getStudentsOfSpecificCourse(userData.token, courseData).then((response) => {
-            setStudents(response)
-        })
-    }, [userData.token, courseData]);
+        if (!userData.user.courses)
+            getStudentsOfSpecificCourse(userData.token, courseData).then((response) => {
+                setStudents(response.students)
+                setIsCourseLoaded(true)
+            })
+        else
+            setIsCourseLoaded(true)
 
+    }, [userData.token, courseData, userData.user.courses]);
+
+    const openAppearences = (student) => {
+        getStudentMissedAppearences(userData.token, student.student._id, courseData._id).then((response) => {
+            console.log(response)
+        })
+    }
+
+    const openMyAppearncesPage = (e) => {
+        e.preventDefault();
+        history.push('/students/updateMyAppearnces')
+    }
 
     return (
         <div className="coursePage-course">
+
             {/* {showModal && <ModalComponent setShowModal={setShowModal} text="Password Changed !" />} */}
             {
                 isCourseLoaded ?
@@ -57,18 +74,21 @@ const CoursePage = () => {
                                 }
                             </div>
                         </div>
-                        <div className="students">
-                            <span className="label">Students:</span>
-                            <div className="studentsNames">
-                                {
-                                    students.length > 0 ?
-                                        students.map((student, i) => (
-                                            <div className="student" key={i}>{student.student.name}</div>
-                                        )) :
-                                        <span className="student">No Students in this Course !</span>
-                                }
+                        {
+                            !userData.user.courses &&
+                            <div className="students">
+                                <span className="label">Students:</span>
+                                <div className="studentsNames">
+                                    {
+                                        students?.length > 0 ?
+                                            students.map((student, i) => (
+                                                <div className="student" key={i} onClick={() => openAppearences(student)}>{student.student.name}</div>
+                                            )) :
+                                            <span className="student">No Students in this Course !</span>
+                                    }
+                                </div>
                             </div>
-                        </div>
+                        }
                         <div className="dates">
                             <div className="beginningDate">
                                 <span className="label">Beginning Date: </span>
@@ -81,14 +101,17 @@ const CoursePage = () => {
                         </div>
 
                         {
-                            userData.courses ?
+                            userData.user.courses ?
                                 <div className="course-student">
-                                    I'm a Student
-                            </div>
+                                    <button onClick={openMyAppearncesPage}>Update My Appearences</button>
+                                </div>
                                 :
                                 <div className="course-professor">
                                     <div className="addStudent">
                                         <button onClick={addStudent}>Add Student to this Course</button>
+                                    </div>
+                                    <div>
+                                        <button onClick={addLessonToCourse}>Add Lesson To This Course</button>
                                     </div>
                                 </div>
                         }

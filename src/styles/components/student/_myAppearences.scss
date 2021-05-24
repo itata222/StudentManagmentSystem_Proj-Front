@@ -1,0 +1,73 @@
+.studentAppearences{
+    margin: 2rem auto;
+    align-items: center;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    text-align:center;
+
+    h1{
+        font-size:1.25rem
+    }
+}
+
+
+.studentAppearences-course{
+    border: 1px solid $secondaryColor;
+    border-radius: 4px;
+    padding:1.2rem;
+    width:80%;
+    margin: 1rem auto;
+
+    h3{
+        margin-top:0;
+        padding-bottom: 1rem;
+        font-size: 1.1rem;
+        border-bottom: 1px solid $secondaryColor;
+    }
+}   
+
+.studentAppearences-courseLessons{
+    display:flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items:center;
+    overflow: auto;
+
+    .studentAppearences-lesson{
+        display:flex;
+        flex-direction: column;
+        align-items:center;
+        padding-top: 0.5rem ;
+        padding-bottom: 0.5rem ;
+        border-bottom: 1px solid $secondaryColor;
+
+        .studentAppearences-lessonTitle{
+            width:100%;
+            display: flex;
+            justify-content:space-around;
+            align-items:center;
+            margin: 0.5rem auto;
+
+            span{
+                font-size: 1rem;
+                font-weight:500;
+            }
+        }
+    }
+    .studentAppearences-lesson:last-of-type{
+        border-bottom:none;
+    }
+}
+
+.studentAppearences-notAppeared{
+    margin-left: 0.5rem;
+
+    input{
+        width:34vw;
+    }
+    button{
+        width:10vw;
+        margin-left: 0.5rem;
+    }
+}

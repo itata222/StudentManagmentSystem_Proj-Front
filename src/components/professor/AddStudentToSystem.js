@@ -22,6 +22,7 @@ const AddStudentToSystem = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState('');
     const [courses, setCourses] = useState([]);
+    const [textError, setTextError] = useState("");
 
     const onBlurName = (e) => {
         const theName = e.target.value.trim();
@@ -64,6 +65,10 @@ const AddStudentToSystem = () => {
         setCourses([])
         const newStudent = { name, username, email, password, courses };
         addStudentToDB(userData.token, newStudent).then((response) => {
+            if (response.response.data.code === 11000)
+                setTextError(`${Object.keys(response.response.data.keyValue)[0]} already Exist`)
+            else
+                setTextError('Student Added !')
             setShowModal(true)
         }).catch((e) => {
             console.log(e)
@@ -73,7 +78,7 @@ const AddStudentToSystem = () => {
     return (
 
         <div className="addStudentToSystem">
-            {showModal && <ModalComponent setShowModal={setShowModal} text="Student Added !" />}
+            {showModal && <ModalComponent setShowModal={setShowModal} text={textError} />}
             <div className="addCourseContainer">
                 <Container component="main" maxWidth="xs">
                     <CssBaseline />

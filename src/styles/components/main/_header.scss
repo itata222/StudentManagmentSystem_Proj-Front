@@ -28,6 +28,9 @@
     font-weight: 500;
     text-decoration: none;
 }
+.upper-nav-item:hover{
+    cursor: pointer;
+}
 
 .lower-nav-item{
     outline:none;
@@ -56,7 +59,7 @@
 }
 
 .upper-nav-active-item{
-    color: $secondaryColor;
+    color: lighten($color: $secondaryColor, $amount:10%);
 }
 
 .lower-nav-active-item{

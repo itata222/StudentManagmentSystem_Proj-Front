@@ -56,5 +56,10 @@
         border-radius: 4px;
         background-color: $secondaryColor;
         color: white;
+
+        &:hover {
+            background-color: lighten($color: $secondaryColor, $amount: 10%);
+            cursor: pointer;
+          }
     }
 }

@@ -89,7 +89,7 @@ export const addStudentToDB = async (token, newStudent) => {
         });
         return res.data
     } catch (err) {
-        console.log(err);
+        return err
     }
 }
 
@@ -108,7 +108,49 @@ export const addStudentToCourseFunc = async (token, studentID, courseID) => {
 
 export const getStudentsOfSpecificCourse = async (token, course) => {
     try {
-        const res = await Axios.post(developmentDB + "/professors/course/students", { course }, {
+        const res = await Axios.post(developmentDB + "/professors/get-courseStudents", { course }, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        return res.data
+    } catch (e) {
+        return e
+    }
+}
+
+export const addLessonToCourse = async (token, lesson, courseID) => {
+    try {
+        const res = await Axios.post(developmentDB + "/professors/add-lessonToCourse?courseID=" + courseID, { lesson }, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        if (res.data)
+            return res.data
+        else
+            throw res
+    } catch (e) {
+        return e
+    }
+}
+
+export const getCourseDataById = async (token, courseID) => {
+    try {
+        const res = await Axios.get(developmentDB + "/professors/getCourseData?courseID=" + courseID, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        return res.data
+    } catch (e) {
+        return e
+    }
+}
+
+export const getStudentMissedAppearences = async (token, studentID, courseID) => {
+    try {
+        const res = await Axios.get(developmentDB + "/professors/getStudentAppearences?courseID=" + courseID + "&studentID=" + studentID, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }

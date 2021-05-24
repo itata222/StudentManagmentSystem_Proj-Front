@@ -44,6 +44,7 @@
         .isStudentCheckBox{
             margin: auto;
             width: 1rem;
+            cursor:pointer;
 
             &:checked{
                 background:blue;
@@ -66,6 +67,10 @@
         background: #ccc;
         cursor: not-allowed;
       }
+      // &:hover {
+      //   background-color: lighten($color: $all-fontColor, $amount: 10%);
+      //   cursor: pointer;
+      // }
     }
   }
   

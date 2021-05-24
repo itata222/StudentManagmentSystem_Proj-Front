@@ -9,7 +9,7 @@ export const getCourseData = async (token, title) => {
                 'Authorization': `Bearer ${token}`
             }
         });
-        return res.data;
+        return res;
     } catch (err) {
         throw new Error(err.response.data.message);
     }

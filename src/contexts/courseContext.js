@@ -14,7 +14,7 @@ const CourseContextProvider = (props) => {
         let isComponentExist = true;
         getCourseData(userData.token, props.courseTitle).then((response) => {
             if (isComponentExist) {
-                dispatchCourseData(setCourseData(response))
+                dispatchCourseData(setCourseData(response.data))
             }
         }).catch((err) => {
             console.log('err', err)

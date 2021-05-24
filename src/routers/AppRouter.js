@@ -17,6 +17,8 @@ import ProfessorRouter from './ProfessorRouter';
 import UserRouter from './UserRouter';
 import StudentRouter from './StudentRouter';
 import MyProfile from '../components/main/MyProfile';
+import AddLessonToCourse from '../components/professor/AddLessonToCourse';
+import StudentAppearences from '../components/student/StudentAppearences';
 
 const AppRouter = () => (
 
@@ -35,7 +37,9 @@ const AppRouter = () => (
                     <ProfessorRouter path='/professors/studentsManagment' component={StudentsManagment} />
                     <ProfessorRouter path='/professors/addStudentToCourse' component={AddStudentToCourse} />
                     <ProfessorRouter path='/professors/addStudentToSystem' component={AddStudentToSystem} />
+                    <ProfessorRouter path='/professors/addLesson/:id' component={AddLessonToCourse} />
                     <StudentRouter path='/students/my-courses' component={StudentCourses} />
+                    <StudentRouter path='/students/updateMyAppearnces' component={StudentAppearences} />
                     <UserRouter path='/course/:title' component={CourseLoader} />
                     <UserRouter path='/profile' component={MyProfile} />
                 </CoursesContextProvider>
