@@ -65,3 +65,24 @@
 .lower-nav-active-item{
     color: lighten($color: $secondaryColor, $amount: 20%)
 }
+
+
+@media (min-width: 768px){
+    .upper-nav-item,.upper-nav-brand{
+        font-size: 1.45rem;
+        }
+    
+    .lower-nav-item{
+        font-size: 1.25rem;
+        padding: 0.7rem;
+    }
+    
+}
+
+@media (min-width:1000px){
+    .upper-nav{
+        width:80%;
+        margin: auto;
+        justify-content:space-around;
+    }
+}

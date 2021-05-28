@@ -12,6 +12,7 @@
     border-radius: 5px;
     margin: 2rem;
     padding: 1rem;
+    max-width: 600px;
   }
   
   .login-form {
@@ -103,4 +104,121 @@
   border-radius: 5px;
   padding: 0.5rem;
   text-align: center;
+}
+
+@media (min-width: 768px){
+  .login-page__form {
+    width: 80%;
+    border: $borderStyleV1;
+    border-radius: 5px;
+    margin: 2rem;
+    padding: 1rem;
+    max-width: 600px;
+    height:40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  
+  .login-form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    h3 {
+      text-align: center;
+      color: $all-fontColor;
+      font-size: 1.75rem;
+      margin: 0;
+    }
+  
+    input {
+      display: block;
+      width: 100%;
+      padding: 0.5rem;
+      border: $borderStyleV1;
+      margin-top: 1rem;
+      border-radius: 5px;
+      height:3rem;
+  
+      &:focus {
+        outline: none;
+      }
+    }
+    .isStudentSection{
+        display: flex;
+        align-self: center;
+        margin-left: 0.45rem;
+        align-items: center;
+        justify-content: space-between;
+        width: 35%;
+
+        .isStudentLabel{
+            font-size: 1.15rem;
+            width: 100%;
+        }
+        .isStudentCheckBox{
+            margin: auto;
+            width: 1.3rem;
+            cursor:pointer;
+
+            &:checked{
+                background:blue;
+                color: white;
+            }
+        }
+    }
+      
+  
+    button {
+      display: block;
+      padding: 1.2rem;
+      background: $all-fontColor;
+      color: $all-backgroundColor;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+  
+      &:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+      // &:hover {
+      //   background-color: lighten($color: $all-fontColor, $amount: 10%);
+      //   cursor: pointer;
+      // }
+    }
+  }
+  
+  .input-invalid {
+    border: 1px solid red;
+  }
+  
+  .invalid-message {
+    color: red;
+    font-size: 0.75rem;
+  }
+  
+  .login-form__nav {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+  
+    div {
+      font-size: 0.75rem;
+      align-self: flex-end;
+      text-decoration: underline;
+    }
+  }
+ 
+  
+.error-message {
+  color: $errorMessageColor;
+  background: #ccc;
+  border-radius: 5px;
+  padding: 0.5rem;
+  text-align: center;
+}
 }

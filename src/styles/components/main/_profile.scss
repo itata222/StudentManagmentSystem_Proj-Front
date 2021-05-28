@@ -20,6 +20,7 @@
             font-weight: 600;
             margin-right: 0.2rem;
         }
+       
     }
     .MuiAvatar-root{
         width:5rem;
@@ -61,5 +62,78 @@
             background-color: lighten($color: $secondaryColor, $amount: 10%);
             cursor: pointer;
           }
+    }
+}
+
+@media (min-width: 500px){
+    .profile{
+    
+        div{
+            margin: 1rem auto;
+            width:50vw;
+            text-align:center;
+    
+            span{
+                font-size: 1.1rem;
+                font-weight: 500;
+            }
+
+            .label{
+                font-size: 1.3rem;
+                font-weight: 600;
+                margin-right: 0.2rem;
+            }
+        }
+        .MuiAvatar-root{
+            width:7rem;
+            height:7rem;
+            font-size: 2rem;
+            font-family: $all-fontFamily;
+            background-color:lighten($color: $all-fontColor, $amount: 25%)
+        }
+
+        button{
+            padding:1rem;
+            font-size: 1.1rem;
+        }
+
+        .changePasswordContainer,.changePasswordForm{
+            width:100%;
+            display: flex;
+            flex-direction:column;
+            justify-content:space-around;
+            align-items: center;
+            
+            h3{
+                font-size: 1rem;
+            }
+    
+            input{
+                margin: 0.5rem auto;
+                padding:0.5rem;
+                font-size: 1rem;
+            }
+            input::placeholder{
+                font-size: 1rem;
+            }
+        }
+       
+        .error{
+            color: $errorMessageColor;
+            background: #ccc;
+            border-radius: 5px;
+            padding: 0.5rem;
+            text-align: center; 
+        }
+    }
+}
+
+
+@media (min-width: 1000px){
+    .profile{
+        width:50%
+    }
+    .profile div{
+        width:50%;
     }
 }

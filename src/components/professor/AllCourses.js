@@ -16,15 +16,14 @@ const ProfessorCourses = () => {
     // console.log(userData)
     useEffect(() => {
         let isComponentExist = true;
-        getAllCoursesFromDB(userData.token).then((courses) => {
-            if (isComponentExist) {
-                saveCoursesOnCookie(courses)
+        if (isComponentExist) {
+            getAllCoursesFromDB(userData.token).then((courses) => {
+                saveCoursesOnCookie(courses);
                 dispatchCoursesData(getAllCourses(courses));
                 setIsPageLoaded(true);
-            }
-            else
-                console.log('wwfwfwf')
-        }).catch((err) => { alert(err.message) });
+
+            }).catch((err) => { alert(err.message) });
+        }
         return () => {
             isComponentExist = false;
         };

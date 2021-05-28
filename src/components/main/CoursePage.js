@@ -5,25 +5,19 @@ import { LoginContext } from '../../contexts/loginContext'
 import Avatar from '@material-ui/core/Avatar';
 import Spinner from './Spinner'
 import { useHistory } from 'react-router';
-import { getStudentMissedAppearences, getStudentsOfSpecificCourse } from '../../services/professorService';
+import { getStudentsOfSpecificCourse } from '../../services/professorService';
 
 
 const CoursePage = () => {
     const { userData } = useContext(LoginContext);
     const { courseData } = useContext(CourseContext);
     const [students, setStudents] = useState([...courseData.students]);
-    // const [lessons, setLessons] = useState([...courseData.lessonsDuringWeek]);
     const [isCourseLoaded, setIsCourseLoaded] = useState(false);
     const history = useHistory()
 
     const addStudent = (e) => {
         e.preventDefault();
         history.push('/professors/studentsManagment')
-    }
-
-    const addLessonToCourse = (e) => {
-        e.preventDefault();
-        history.push('/professors/addLesson/' + courseData._id)
     }
 
     useEffect(() => {
@@ -38,8 +32,12 @@ const CoursePage = () => {
     }, [userData.token, courseData, userData.user.courses]);
 
     const openAppearences = (student) => {
-        getStudentMissedAppearences(userData.token, student.student._id, courseData._id).then((response) => {
-            console.log(response)
+        history.push({
+            pathname: '/professors/studentAppearences/' + student.student._id,
+            state: {
+                courseDataID: courseData._id,
+                studentName: student.student.name
+            }
         })
     }
 
@@ -82,7 +80,12 @@ const CoursePage = () => {
                                     {
                                         students?.length > 0 ?
                                             students.map((student, i) => (
-                                                <div className="student" key={i} onClick={() => openAppearences(student)}>{student.student.name}</div>
+                                                <div className="student" key={i} onClick={(e) => {
+                                                    e.preventDefault();
+                                                    openAppearences(student, i)
+                                                }}>
+                                                    {student.student.name}
+                                                </div>
                                             )) :
                                             <span className="student">No Students in this Course !</span>
                                     }
@@ -109,9 +112,6 @@ const CoursePage = () => {
                                 <div className="course-professor">
                                     <div className="addStudent">
                                         <button onClick={addStudent}>Add Student to this Course</button>
-                                    </div>
-                                    <div>
-                                        <button onClick={addLessonToCourse}>Add Lesson To This Course</button>
                                     </div>
                                 </div>
                         }

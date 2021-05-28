@@ -65,7 +65,7 @@ const AddStudentToSystem = () => {
         setCourses([])
         const newStudent = { name, username, email, password, courses };
         addStudentToDB(userData.token, newStudent).then((response) => {
-            if (response.response.data.code === 11000)
+            if (response?.response?.data?.code === 11000)
                 setTextError(`${Object.keys(response.response.data.keyValue)[0]} already Exist`)
             else
                 setTextError('Student Added !')

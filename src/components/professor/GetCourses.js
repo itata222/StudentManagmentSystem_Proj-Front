@@ -4,12 +4,16 @@ import { CoursesContext } from '../../contexts/coursesContext';
 
 const GetCourses = () => {
     const { coursesData } = useContext(CoursesContext);
-
     const history = useHistory();
 
     const OnClickAddCourse = (e) => {
         e.preventDefault();
         history.push('/professors/addCourse')
+    }
+
+    const OnClickAddStudent = (e) => {
+        e.preventDefault();
+        history.push('/professors/addStudentToSystem')
     }
 
     const openCoursePage = (title) => {
@@ -21,6 +25,7 @@ const GetCourses = () => {
         <div className="allCoursesContainer">
             <div className="addCourse">
                 <button className="addCourseButton" onClick={OnClickAddCourse}>Add Course</button>
+                <button className="addCourseButton" onClick={OnClickAddStudent}>Add Student</button>
             </div>
             {
                 coursesData.courses.map((course, i) => (

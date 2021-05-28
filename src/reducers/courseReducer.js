@@ -2,6 +2,7 @@ export const initialCourseState = {
     title: "",
     description: "",
     lessonsDuringWeek: [],
+    lessons: [],
     students: [],
     beginningDate: "",
     endingDate: ""

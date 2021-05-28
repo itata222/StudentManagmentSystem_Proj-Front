@@ -46,3 +46,17 @@
     }
   }
   
+
+  @media (min-width: 768px){
+    .modal-content{
+      h4{
+        text-align: center;
+        font-size: 1.45rem;
+      }
+
+      button {
+        padding: 0.8rem;
+        font-size: larger;
+      }  
+    }
+  }

@@ -11,7 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { FormGroup } from "@material-ui/core";
 import { useState } from 'react';
-import { addCourseToDB } from '../../services/professorService';
+import { addCourseToDB, addLessonToCourse } from '../../services/professorService';
 import { LoginContext } from '../../contexts/loginContext';
 import { useContext } from 'react';
 import ModalComponent from '../main/Modal'
@@ -76,9 +76,9 @@ const ProfessorAddCourse = () => {
         e.preventDefault();
         const lessonsFiltered = lessonsDuringWeek.filter(day => day.length > 0);
         const newCourse = { title, description, lessonsDuringWeek: lessonsFiltered, beginningDate, endingDate };
-        addCourseToDB(userData.token, newCourse).then((response) => {
-            console.log(coursesData)
+        addCourseToDB(userData.token, newCourse).then(async (response) => {
             dispatchCoursesData(addCourse(response))
+            await addLessonToCourse(userData.token, response._id)
             console.log(coursesData)
             setShowModal(true)
         }).catch((e) => {
@@ -153,7 +153,7 @@ const ProfessorAddCourse = () => {
                                     id="date"
                                     label="Beginning Date"
                                     type="date"
-                                    defaultValue="YYYY-MM-DD"
+                                    defaultValue="2021-05-24"
                                     className='addCourse-date'
                                     InputLabelProps={{
                                         shrink: true,
@@ -165,7 +165,7 @@ const ProfessorAddCourse = () => {
                                     id="date"
                                     label="Ending Date"
                                     type="date"
-                                    defaultValue="YYYY-MM-DD"
+                                    defaultValue="2021-09-11"
                                     className='addCourse-date'
                                     InputLabelProps={{
                                         shrink: true,

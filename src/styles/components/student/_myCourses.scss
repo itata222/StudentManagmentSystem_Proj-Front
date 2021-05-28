@@ -1,4 +1,5 @@
 
+
 .myCourses-course{
     width:80%;
     height:5rem;
@@ -19,7 +20,7 @@
     .myCourses-courseName{
         font-size: 0.95rem;
         font-weight: 500;
-        width: 8rem;
+        width: 30%;
         border-right: $nav-BottomBorder;
     }
 
@@ -44,4 +45,57 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media (min-width: 500px){
+
+    .myCourses-course{
+    .myCourses-courseName{
+        font-size: 1.2rem;
+        font-weight: 500;
+        width: 8rem;
+        border-right: $nav-BottomBorder;
+    }
+
+    .myCourses-courseDates{
+        display:flex;
+        flex-direction: column;
+        justify-content: center; 
+
+        div{
+            font-weight: 300;
+            font-size: 1.05rem;
+        }
+    }
+
+    .myCourses-courseBD,.myCourses-courseED{
+        font-weight: 400;
+        font-size: 1.15rem;
+    }
+}
+}
+
+@media (min-width: 750px){
+    .courses{
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .myCourses-course{
+        width:45%;
+        height:7.5rem;
+    }
+}
+
+
+@media(min-width: 1000px){
+    .courses{
+        width:80%;
+        margin: 2rem auto;
+    }
+
+    .myCourses-course{
+        border-radius: 0;
+    }
 }

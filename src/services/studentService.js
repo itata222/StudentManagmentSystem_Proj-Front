@@ -52,9 +52,10 @@ export const getMyCoursesFromDB = async (token) => {
     }
 }
 
-export const updateMyAppearnces = async (token, lesson, reason) => {
+export const updateMyAppearnces = async (token, lesson, attended, reason) => {
+    console.log(attended, reason)
     try {
-        const res = await Axios.post(developmentDB + "/students/update-appearences", { lesson, reason }, {
+        const res = await Axios.post(developmentDB + "/students/update-appearences", { lesson, attended, reason }, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }

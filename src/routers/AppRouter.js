@@ -17,35 +17,36 @@ import ProfessorRouter from './ProfessorRouter';
 import UserRouter from './UserRouter';
 import StudentRouter from './StudentRouter';
 import MyProfile from '../components/main/MyProfile';
-import AddLessonToCourse from '../components/professor/AddLessonToCourse';
 import StudentAppearences from '../components/student/StudentAppearences';
+import professorStudentAppearences from '../components/professor/ProfessorStudentAppearences';
 
 const AppRouter = () => (
 
     <BrowserRouter>
         <LoginContextProvider>
-            <Header />
-            <Switch>
-                <Route path="/" exact>
-                    <Redirect to="/home" />
-                </Route>
-                <Route path="/home" component={Home} />
-                <Route path="/login" component={LoginPage} />
-                <CoursesContextProvider>
+            <CoursesContextProvider>
+                <Header />
+                <Switch>
+                    <Route path="/" exact>
+                        <Redirect to="/home" />
+                    </Route>
+                    <Route path="/home" component={Home} />
+                    <Route path="/login" component={LoginPage} />
                     <ProfessorRouter path='/professors/courses' component={ProfessorCourses} />
                     <ProfessorRouter path='/professors/addCourse' component={ProfessorAddCourse} />
                     <ProfessorRouter path='/professors/studentsManagment' component={StudentsManagment} />
                     <ProfessorRouter path='/professors/addStudentToCourse' component={AddStudentToCourse} />
                     <ProfessorRouter path='/professors/addStudentToSystem' component={AddStudentToSystem} />
-                    <ProfessorRouter path='/professors/addLesson/:id' component={AddLessonToCourse} />
+                    <ProfessorRouter path='/professors/studentAppearences/:studentID' component={professorStudentAppearences} />
                     <StudentRouter path='/students/my-courses' component={StudentCourses} />
                     <StudentRouter path='/students/updateMyAppearnces' component={StudentAppearences} />
                     <UserRouter path='/course/:title' component={CourseLoader} />
                     <UserRouter path='/profile' component={MyProfile} />
-                </CoursesContextProvider>
-                <Route path="*" component={PageNotFound} />
-            </Switch>
+                    <Route path="*" component={PageNotFound} />
+                </Switch>
+            </CoursesContextProvider>
         </LoginContextProvider>
+
     </BrowserRouter>
 )
 

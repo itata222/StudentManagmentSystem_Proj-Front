@@ -13,9 +13,8 @@ const AddStudentToCourse = () => {
     const { coursesData } = useContext(CoursesContext);
     const { userData } = useContext(LoginContext);
     const coursesFromCookie = getCoursesFromCookie();
-    const courses = coursesFromCookie || coursesData;
+    const courses = coursesData.courses || coursesFromCookie;
     const [showModal, setShowModal] = useState(false);
-
     const [students, setStudents] = useState([]);
     const [usersToDisplay, setUsersToDisplay] = useState([]);
     const [coursesToDisplay, setCoursesToDisplay] = useState([...courses]);
@@ -41,7 +40,7 @@ const AddStudentToCourse = () => {
     const selectStudentOnClick = (index) => {
         setSelectedStudent(usersToDisplay[index])
         if (selectedCourse.title)
-            setIsSelectsDone(true)
+            setIsSelectsDone(true);
     }
 
     const selectCourseOnClick = (index) => {
@@ -58,7 +57,7 @@ const AddStudentToCourse = () => {
         addStudentToCourseFunc(userData.token, studentID, courseID).then((response) => {
             setStudentAdded(false)
             if (response.name)
-                setModalText(`${selectedStudent.name} Added Successfully to ${selectedCourse.title}`);
+                setModalText(`${selectedStudent.name} was Added Successfully to ${selectedCourse.title}`);
             else
                 setModalText(response.message)
             setShowModal(true)

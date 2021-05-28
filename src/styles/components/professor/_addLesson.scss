@@ -1,11 +1,52 @@
-.lessonsInDays{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.addLessonContainer{
+    width:80%;
+    border: 1px solid $secondaryColor;
+    margin: 2rem auto;
+    border-radius: 4px;
 
-    h3{
-        margin: 0.2rem auto;
-        margin-top:1rem;
+    .lessonsInDays{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h3{
+            margin: 0.2rem auto;
+            margin-top:1rem;
+        }
+    }
+}
+
+@media (min-width: 768px){
+    .addLessonContainer{
+    
+        h3{
+            font-size: 1.2rem;
+        }
+        h1{
+            font-size: 1.6rem;
+        }
+        .lessonsInDays{
+            width:100%;
+
+            .courseDay{
+                font-size: 1.1rem;
+            }
+        }
+        form{
+            &:first-child{
+                width:80%;
+                div{
+                    width:50%;
+                }
+            }
+            button{
+                padding:1.2rem;
+                span{
+                    font-size: 1.2rem;
+
+                }
+            }
+        }
     }
 }

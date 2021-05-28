@@ -1,0 +1,61 @@
+.professorStudentAppearences{
+    width:100%;
+
+    h1{
+        color: $secondaryColor;
+        text-align: center;
+        font-size: 1.5rem;
+        margin: 2rem auto;
+    }
+
+    h2{
+        color: $secondaryColor;
+        text-align: center;
+        font-size: 1.2rem;
+        margin: 2rem auto;
+    }
+
+    .studentAppearencesContainer{
+        display: flex;
+        align-items: center;
+        justify-content:center;
+        width:90%;
+        border-radius: 4px;
+        border: 1px solid $secondaryColor;
+        margin:auto;
+        padding: 1rem;
+    }
+
+    .courseLessons{
+        width:30%;
+        text-align: center;
+
+        .lessonDate{
+            margin:0.5rem auto;
+            border-bottom: 1px solid $secondaryColor;
+            padding-bottom: 0.4rem;
+        }
+    }
+
+    .studentAttended{
+        width:20%;
+        text-align: center;
+
+        .lessonAttended{
+            margin:0.5rem auto;
+            border-bottom: 1px solid $secondaryColor;
+            padding-bottom: 0.4rem;
+        }
+    }
+
+    .studentReasons{
+        width:50%;
+        text-align: center;
+
+        .lessonReason{
+            margin:0.5rem auto;
+            border-bottom: 1px solid $secondaryColor;
+            padding-bottom: 0.4rem;
+        }
+    }
+}

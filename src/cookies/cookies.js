@@ -9,8 +9,12 @@ export const saveUserOnCookie = (userData) => {
 };
 
 export const saveCoursesOnCookie = (courses) => {
-    const jsonCoursesData = JSON.stringify(courses);
-    Cookies.set(COURSES_DATA, jsonCoursesData, { expires: 1 / 24, sameSite: "strict", secure: true });
+    try {
+        const jsonCoursesData = JSON.stringify(courses);
+        Cookies.set(COURSES_DATA, jsonCoursesData, { expires: 1 / 24, sameSite: "strict", secure: true });
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 export const deleteUserFromCookie = () => {
